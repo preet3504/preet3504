@@ -86,20 +86,6 @@ Researching **distributed system patterns** to enhance fault tolerance and horiz
 
 ---
 
-## 📊 GitHub Stats
-
-<div align="center">
-
-![GitHub Stats](https://github-readme-stats.vercel.app/api?username=preet3504&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117)
-
-![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=preet3504&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117)
-
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=preet3504&theme=tokyonight&hide_border=true&background=0D1117)
-
-</div>
-
----
-
 ## 🏆 Achievements
 
 ```
