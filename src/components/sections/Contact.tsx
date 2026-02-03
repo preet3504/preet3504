@@ -10,11 +10,73 @@ import { Button } from '@/components/ui/Button';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [errors, setErrors] = useState({ name: '', email: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const validateEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
+  const validateForm = () => {
+    const newErrors = { name: '', email: '', message: '' };
+    let isValid = true;
+
+    if (!formData.name.trim()) {
+      newErrors.name = 'Name is required';
+      isValid = false;
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = 'Name must be at least 2 characters';
+      isValid = false;
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = 'Email is required';
+      isValid = false;
+    } else if (!validateEmail(formData.email)) {
+      newErrors.email = 'Please enter a valid email';
+      isValid = false;
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = 'Message is required';
+      isValid = false;
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = 'Message must be at least 10 characters';
+      isValid = false;
+    }
+
+    setErrors(newErrors);
+    return isValid;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoLink = `mailto:${PERSONAL_INFO.email}?subject=Portfolio Contact from ${formData.name}&body=${formData.message}%0D%0A%0D%0AFrom: ${formData.email}`;
-    window.location.href = mailtoLink;
+    
+    if (!validateForm()) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+        setTimeout(() => setSubmitStatus('idle'), 5000);
+      } else {
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const contactInfo = [
@@ -93,43 +155,74 @@ export const Contact: React.FC = () => {
 
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-gray-300 mb-2 text-sm font-medium">Your Name</label>
+                    <label className="block text-gray-300 mb-2 text-sm font-medium">Your Name *</label>
                     <input
                       type="text"
-                      required
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#27272a] rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
+                      onChange={(e) => {
+                        setFormData({ ...formData, name: e.target.value });
+                        setErrors({ ...errors, name: '' });
+                      }}
+                      className={`w-full px-4 py-3 bg-[#1a1a1a] border rounded-lg text-white focus:outline-none transition-colors ${
+                        errors.name ? 'border-red-500' : 'border-[#27272a] focus:border-cyan-500'
+                      }`}
                       placeholder="John Doe"
                     />
+                    {errors.name && <p className="text-red-400 text-sm mt-1">{errors.name}</p>}
                   </div>
 
                   <div>
-                    <label className="block text-gray-300 mb-2 text-sm font-medium">Your Email</label>
+                    <label className="block text-gray-300 mb-2 text-sm font-medium">Your Email *</label>
                     <input
                       type="email"
-                      required
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#27272a] rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors"
+                      onChange={(e) => {
+                        setFormData({ ...formData, email: e.target.value });
+                        setErrors({ ...errors, email: '' });
+                      }}
+                      className={`w-full px-4 py-3 bg-[#1a1a1a] border rounded-lg text-white focus:outline-none transition-colors ${
+                        errors.email ? 'border-red-500' : 'border-[#27272a] focus:border-cyan-500'
+                      }`}
                       placeholder="john@example.com"
                     />
+                    {errors.email && <p className="text-red-400 text-sm mt-1">{errors.email}</p>}
                   </div>
 
                   <div>
-                    <label className="block text-gray-300 mb-2 text-sm font-medium">Message</label>
+                    <label className="block text-gray-300 mb-2 text-sm font-medium">Message *</label>
                     <textarea
-                      required
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) => {
+                        setFormData({ ...formData, message: e.target.value });
+                        setErrors({ ...errors, message: '' });
+                      }}
                       rows={5}
-                      className="w-full px-4 py-3 bg-[#1a1a1a] border border-[#27272a] rounded-lg text-white focus:border-blue-500 focus:outline-none transition-colors resize-none"
+                      className={`w-full px-4 py-3 bg-[#1a1a1a] border rounded-lg text-white focus:outline-none transition-colors resize-none ${
+                        errors.message ? 'border-red-500' : 'border-[#27272a] focus:border-cyan-500'
+                      }`}
                       placeholder="Your message here..."
                     />
+                    {errors.message && <p className="text-red-400 text-sm mt-1">{errors.message}</p>}
                   </div>
 
-                  <Button type="submit" size="lg" className="w-full" icon={<Send size={20} />}>
-                    Send Message
+                  {submitStatus === 'success' && (
+                    <div className="bg-green-500/10 border border-green-500/50 rounded-lg p-4 text-green-400 text-sm">
+                      ✓ Message sent successfully! I'll get back to you soon.
+                    </div>
+                  )}
+                  {submitStatus === 'error' && (
+                    <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-4 text-red-400 text-sm">
+                      ✗ Failed to send message. Please try again or email directly.
+                    </div>
+                  )}
+                  <Button 
+                    type="submit" 
+                    size="lg" 
+                    className="w-full" 
+                    icon={<Send size={20} />}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </Button>
                 </form>
               </Card>
