@@ -81,8 +81,7 @@ export const Contact: React.FC = () => {
 
   const contactInfo = [
     { icon: Mail, label: 'Email', value: PERSONAL_INFO.email, href: `mailto:${PERSONAL_INFO.email}` },
-    { icon: Phone, label: 'Phone', value: PERSONAL_INFO.phone, href: `tel:${PERSONAL_INFO.phone}` },
-    { icon: MapPin, label: 'Location', value: PERSONAL_INFO.location, href: null },
+    { icon: Phone, label: 'Phone', value: PERSONAL_INFO.phone, href: `tel:${PERSONAL_INFO.phone}` }
   ];
 
   const iconMap: Record<string, any> = { Linkedin, Github, Mail, Phone };
