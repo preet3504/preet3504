@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { LayoutDashboard, User, History, FolderCode, Bolt, Mail, Github, Linkedin, AtSign } from 'lucide-react';
+import { LayoutDashboard, User, History, FolderCode, Bolt, Mail, Github, Linkedin, AtSign, GraduationCap, Phone } from 'lucide-react';
 import { PERSONAL_INFO, NAV_LINKS, SOCIAL_LINKS } from '@/lib/constants';
 import Link from 'next/link';
 
@@ -52,6 +52,7 @@ export const Sidebar: React.FC = () => {
       case 'experience': return <History size={18} />;
       case 'projects': return <FolderCode size={18} />;
       case 'skills': return <Bolt size={18} />;
+      case 'education': return <GraduationCap size={18} />;
       case 'contact': return <Mail size={18} />;
       default: return <LayoutDashboard size={18} />;
     }
@@ -91,12 +92,18 @@ export const Sidebar: React.FC = () => {
       <div className="mt-auto pt-8 border-t border-zinc-900">
         <div className="flex gap-4 text-zinc-500">
           {SOCIAL_LINKS.map((social) => {
-            const Icon = social.name === 'GitHub' ? Github : social.name === 'LinkedIn' ? Linkedin : AtSign;
+            const iconMap: Record<string, React.ElementType> = {
+              GitHub: Github,
+              LinkedIn: Linkedin,
+              Email: Mail,
+              Phone: Phone,
+            };
+            const Icon = iconMap[social.name] || AtSign;
             return (
               <a
                 key={social.name}
                 href={social.url}
-                target="_blank"
+                target={social.name === 'Email' || social.name === 'Phone' ? '_self' : '_blank'}
                 className="hover:text-cyan-400 transition-colors"
                 aria-label={social.name}
               >

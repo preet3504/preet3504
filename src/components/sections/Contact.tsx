@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin } from 'lucide-react';
+import { Mail, MapPin, Phone } from 'lucide-react';
 import { PERSONAL_INFO } from '@/lib/constants';
 import { Button } from '@/components/ui/Button';
 
@@ -42,6 +42,10 @@ export const Contact: React.FC = () => {
             <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-3 text-zinc-500 hover:text-cyan-400 transition-colors">
               <Mail size={18} className="text-cyan-500" />
               {PERSONAL_INFO.email}
+            </a>
+            <a href={`tel:${PERSONAL_INFO.phone}`} className="flex items-center gap-3 text-zinc-500 hover:text-cyan-400 transition-colors">
+              <Phone size={18} className="text-cyan-500" />
+              {PERSONAL_INFO.phone}
             </a>
             <div className="flex items-center gap-3 text-zinc-500">
               <MapPin size={18} className="text-cyan-500" />
