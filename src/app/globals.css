@@ -1,151 +1,68 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --color-background: 10 10 10;
-    --color-foreground: 249 250 251;
-    --color-card: 17 17 17;
-    --color-primary: 59 130 246;
-    --color-secondary: 139 92 246;
-    --color-muted: 156 163 175;
-    --color-accent: 6 182 212;
-    --color-border: 39 39 42;
-  }
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --color-background: #000000;
+  --color-foreground: #ffffff;
+  
+  --color-zinc-950: #09090b;
+  --color-zinc-900: #18181b;
+  --color-zinc-800: #27272a;
+  --color-zinc-700: #3f3f46;
+  --color-zinc-600: #52525b;
+  --color-zinc-500: #71717a;
+  --color-zinc-400: #a1a1aa;
+  
+  --color-cyan-500: #06b6d4;
+  --color-cyan-400: #22d3ee;
+  
+  --border-radius-xs: 2px;
 }
 
 @layer base {
+  @import url('https://fonts.googleapis.com/css2?family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap');
+
+  :root {
+    --bg-page: #000000;
+    --border-subtle: #1f1f23;
+    --text-primary: #ffffff;
+    --text-secondary: #a1a1aa;
+    --accent: #06b6d4;
+  }
+
   body {
-    background-color: #0a0a0a;
-    color: rgb(249 250 251);
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-feature-settings: "rlig" 1, "calt" 1;
   }
-  
+
   html {
     scroll-behavior: smooth;
-  }
-  
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 3px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #0a0a0a;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background: #3b82f6;
-    border-radius: 3px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #2563eb;
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    background: linear-gradient(to right, rgb(59 130 246), rgb(139 92 246), rgb(6 182 212));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+  .section-anchor {
+    scroll-margin-top: 5rem;
   }
-  
-  .text-gradient-blue {
-    background: linear-gradient(to right, rgb(96 165 250), rgb(37 99 235));
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-  
-  .glow-effect {
-    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
-  }
-  
-  .glow-effect-purple {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-  }
-  
-  .card-hover {
-    transition: all 0.3s ease;
-  }
-  
-  .card-hover:hover {
-    transform: scale(1.02);
-    box-shadow: 0 20px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(59, 130, 246, 0.1);
-  }
-  
-  .gradient-border {
-    position: relative;
-    background: linear-gradient(#111111, #111111) padding-box,
-                linear-gradient(135deg, #3b82f6, #8b5cf6) border-box;
-    border: 2px solid transparent;
-  }
-  
-  .mesh-gradient {
-    background: 
-      radial-gradient(at 40% 20%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
-      radial-gradient(at 80% 0%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
-      radial-gradient(at 0% 50%, rgba(6, 182, 212, 0.1) 0%, transparent 50%);
-  }
-  
-  /* Animation Classes */
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  @keyframes float {
-    0%, 100% {
-      transform: translateY(0px);
-    }
-    50% {
-      transform: translateY(-20px);
-    }
-  }
-  
-  /* Name Animation */
-  .animate-gradient-text {
-    background: linear-gradient(
-      90deg,
-      rgb(59 130 246),
-      rgb(139 92 246),
-      rgb(6 182 212),
-      rgb(59 130 246)
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: gradient-shift 3s linear infinite;
-  }
-  
-  @keyframes gradient-shift {
-    0% {
-      background-position: 0% center;
-    }
-    100% {
-      background-position: 200% center;
-    }
-  }
-  
-  .animate-glow {
-    animation: glow 2s ease-in-out infinite alternate;
-  }
-  
-  @keyframes glow {
-    from {
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
-    }
-    to {
-      box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
-    }
-  }
-}
 
-/* Selection Color */
-::selection {
-  background-color: rgba(59, 130, 246, 0.3);
-  color: #f9fafb;
+  /* Custom Scrollbar matching the theme */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #000;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1f1f23;
+    border-radius: 10px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #27272a;
+  }
 }

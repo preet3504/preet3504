@@ -14,19 +14,19 @@ interface CardProps {
 export const Card: React.FC<CardProps> = ({ 
   children, 
   className, 
-  hover = true,
+  hover = false,
   gradient = false 
 }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
       className={cn(
-        'bg-[#111111] border border-[#27272a] rounded-xl p-6',
-        hover && 'card-hover cursor-pointer',
-        gradient && 'gradient-border',
+        'bg-zinc-950/50 border border-zinc-900 rounded-[2px] p-6',
+        hover && 'hover:border-zinc-700 transition-colors duration-300',
+        gradient && 'border-cyan-500/20 bg-cyan-500/[0.02]',
         className
       )}
     >

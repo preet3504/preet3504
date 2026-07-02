@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "@/components/layout/Header";
-import { Footer } from "@/components/layout/Footer";
+import { Sidebar } from "@/components/layout/Sidebar";
+import { TableOfContents } from "@/components/layout/TableOfContents";
+import { MobileNav } from "@/components/layout/MobileNav";
 
 export const metadata: Metadata = {
   title: "Preet Patel | Full Stack Developer",
@@ -22,10 +23,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="antialiased">
-        <Header />
-        {children}
-        <Footer />
+      <body className="antialiased bg-black text-white selection:bg-cyan-500/30">
+        <div className="flex min-h-screen">
+          <Sidebar />
+          <MobileNav />
+          <main className="flex-1 px-6 lg:px-24 py-12 lg:py-20">
+            <div className="max-w-4xl mx-auto">
+              {children}
+            </div>
+          </main>
+          <TableOfContents />
+        </div>
       </body>
     </html>
   );
