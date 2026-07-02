@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Info } from 'lucide-react';
 
 export const TableOfContents: React.FC = () => {
@@ -35,12 +35,26 @@ export const TableOfContents: React.FC = () => {
       }
 
       setActiveSection(currentSection);
+
+      // Keep the URL hash in sync with the visible section
+      if (window.location.hash !== `#${currentSection}`) {
+        window.history.replaceState(null, '', `#${currentSection}`);
+      }
     };
 
     handleScroll();
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = useCallback((e: React.MouseEvent, sectionId: string) => {
+    e.preventDefault();
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+      window.history.pushState(null, '', `#${sectionId}`);
+    }
   }, []);
 
   const tocItems = [
@@ -60,7 +74,8 @@ export const TableOfContents: React.FC = () => {
           <li key={item.id}>
             <a
               href={`#${item.id}`}
-              className={`transition-colors duration-200 ${activeSection === item.id ? 'text-white font-medium' : 'text-zinc-500 hover:text-zinc-300'
+              onClick={(e) => scrollToSection(e, item.id)}
+              className={`transition-colors duration-200 cursor-pointer ${activeSection === item.id ? 'text-white font-medium' : 'text-zinc-500 hover:text-zinc-300'
                 }`}
             >
               {item.label}
