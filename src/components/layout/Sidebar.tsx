@@ -82,7 +82,7 @@ export const Sidebar: React.FC = () => {
           </div>
           <span className="font-bold tracking-tight text-xl">{PERSONAL_INFO.name}</span>
         </div>
-        <p className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">{PERSONAL_INFO.title.split(' ')[0]} Engineer</p>
+        <p className="text-[14px] font-mono text-zinc-300 uppercase tracking-widest">{PERSONAL_INFO.title.split(' ')[0]} Engineer</p>
       </div>
 
       <nav className="flex-1 space-y-1">

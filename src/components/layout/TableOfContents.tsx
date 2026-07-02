@@ -68,7 +68,7 @@ export const TableOfContents: React.FC = () => {
 
   return (
     <aside className="hidden xl:flex flex-col w-64 h-screen sticky top-0 p-8 pt-20 border-l border-zinc-900">
-      <div className="text-[10px] font-mono text-zinc-600 mb-6 tracking-tighter uppercase">On this page</div>
+      <div className="text-[11px] font-mono text-zinc-400 mb-6 tracking-tighter uppercase">On this page</div>
       <ul className="space-y-3 text-xs">
         {tocItems.map((item) => (
           <li key={item.id}>
@@ -84,13 +84,20 @@ export const TableOfContents: React.FC = () => {
         ))}
       </ul>
 
-      <div className="mt-12 p-4 bg-cyan-500/5 border border-cyan-500/20 rounded-[2px]">
-        <div className="flex items-center gap-2 mb-2 text-cyan-400">
-          <Info size={14} />
-          <span className="text-[10px] font-mono font-bold uppercase">Status</span>
+      <div className="mt-8 p-5 bg-cyan-500/5 border border-cyan-500/20 rounded-md">
+        <div className="flex items-center gap-2.5 mb-3 text-cyan-400">
+          <Info size={16} />
+          <span className="text-xs font-mono font-bold uppercase tracking-wide">Status</span>
         </div>
-        <p className="text-[10px] leading-relaxed text-zinc-500">
-          Currently available for remote opportunities in AI/Full-Stack Engineering.
+        <div className="flex items-center gap-2.5 mb-3">
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          <span className="text-xs font-medium text-emerald-400 uppercase tracking-wide">Available</span>
+        </div>
+        <p className="text-xs leading-relaxed text-zinc-400">
+          Currently open to new opportunities in AI Engineering &amp; Full-Stack Development.
         </p>
       </div>
     </aside>
