@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Server, Database, Cloud, Users } from 'lucide-react';
+import { Code, Database, Cloud, Brain, Activity } from 'lucide-react';
 import { SKILLS } from '@/lib/constants';
 import { SectionTitle } from '@/components/ui/SectionTitle';
 import { Card } from '@/components/ui/Card';
@@ -10,19 +10,19 @@ import { Badge } from '@/components/ui/Badge';
 
 export const Skills: React.FC = () => {
   const categoryIcons: Record<string, any> = {
-    'Frontend Development': Code,
-    'Backend Development': Server,
+    'Languages & Frameworks': Code,
     'Databases & Caching': Database,
     'Cloud & DevOps': Cloud,
-    'Soft Skills': Users,
+    'Generative AI & NLP': Brain,
+    'Data Science & Pipelines': Activity,
   };
 
   const categoryColors: Record<string, 'accent' | 'purple' | 'success' | 'default'> = {
-    'Frontend Development': 'accent',
-    'Backend Development': 'purple',
+    'Languages & Frameworks': 'accent',
     'Databases & Caching': 'success',
     'Cloud & DevOps': 'accent',
-    'Soft Skills': 'default',
+    'Generative AI & NLP': 'purple',
+    'Data Science & Pipelines': 'default',
   };
 
   return (

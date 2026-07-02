@@ -1,13 +1,13 @@
 export const PERSONAL_INFO = {
   name: "Preet Patel",
-  title: "Full Stack Developer",
+  title: "AI Engineer and Full-Stack Developer",
   location: "Surat, Gujarat, India",
   email: "preetpatel3504@gmail.com",
   phone: "+91 9023350676",
   linkedin: "https://linkedin.com/in/preet3504",
   github: "https://github.com/preet3504",
   
-  summary: "Performance-driven Full Stack Developer with expertise in architecting scalable web applications using React.js and Node.js. Specialized in optimizing data integrity via MySQL/PostgreSQL and enhancing system throughput using Redis and WebSockets.",
+  summary: "AI Engineer and Full-Stack Developer having production experience creating intelligent, cloud-native web applications and scalable systems. Experience in progressing from the initial system software on full-stack systems to the management of data-driven platforms for the enterprise cloud. Proven ability in the design of robust backend API systems, optimization of database systems, caching mechanisms and current modern frameworks while integrating production quality Generative AI pipelines and LLMOps to maximize business outcomes.",
   
   tagline: "Building scalable web applications with modern technologies",
   
@@ -19,17 +19,15 @@ export const EXPERIENCE = [
     id: 1,
     company: "Skyllect Private Limited",
     position: "Full Stack Developer",
-    location: "Surat, India",
+    location: "India",
     duration: "July 2024 – Present",
     type: "Full-time",
     achievements: [
-      "🏆 Emerging Star of the Year 2024: Awarded for maintaining high velocity of delivery and mastering the production stack within the first 6 months",
-      "Developed high-performance frontends using Next.js, resulting in 25% improvement in SEO rankings and initial page load speeds",
-      "Engineered RESTful APIs that handled 10k+ concurrent requests by optimizing Node.js event-loop utilization",
-      "Refined PostgreSQL schema designs and indexed complex queries, reducing average database response time by 40%",
-      "Implemented real-time bidirectional communication via WebSockets, increasing user engagement metrics by 15%",
-      "Integrated Redis caching for frequently accessed data, reducing primary database load by 30% during peak traffic hours",
-      "Automated deployment workflows on AWS, reducing manual intervention and deployment-related downtime by 20%",
+      "Transitioned from a Full Stack Intern to a core engineer, leveraging React.js, Express.js, and MySQL to deliver highly responsive UI modules and robust REST APIs, improving frontend rendering speeds by 25%.",
+      "Optimized high-throughput database architectures by implementing Redis caching layers and refactoring PostgreSQL database schemas, reducing database query latencies by 40% under peak concurrent traffic loads.",
+      "Designed and managed distributed cloud infrastructure on Amazon Web Services (AWS), utilizing cloud-native design patterns to achieve 99.9% application availability and seamless high-volume data packet routing.",
+      "Accelerated team development velocity by 15% by implementing standardized Git workflows and continuous integration environments spanning both GitHub and GitLab platforms.",
+      "Engineered bi-directional, real-time communication layers utilizing WebSockets, enhancing interactive application feature responsiveness and lowering communication latency by over 30%.",
     ],
   },
 ];
@@ -42,37 +40,21 @@ export const EDUCATION = {
 };
 
 export const SKILLS = {
-  "Frontend Development": [
-    "React.js",
-    "Next.js",
-    "TypeScript",
-    "JavaScript (ES6+)",
-    "Tailwind CSS",
-  ],
-  "Backend Development": [
-    "Node.js",
-    "Express.js",
-    "Python",
-    "RESTful APIs",
+  "Languages & Frameworks": [
+    "JavaScript", "TypeScript", "Python", "Node.js", "Express.js", "React.js", "Next.js", "Redux.js"
   ],
   "Databases & Caching": [
-    "MySQL",
-    "PostgreSQL",
-    "Redis",
-    "SQL Optimization",
+    "PostgreSQL", "MySQL", "SQLite", "Redis", "SQL Query Optimization", "Vector Databases"
   ],
   "Cloud & DevOps": [
-    "AWS (EC2/S3)",
-    "Git",
-    "GitHub/GitLab",
-    "CI/CD Pipelines",
+    "Amazon Web Services (AWS)", "GitHub", "GitLab", "Serverless Architecture", "Git", "WebSocket", "Postman API"
   ],
-  "Soft Skills": [
-    "Technical Leadership",
-    "Agile Collaboration",
-    "Problem-Solving",
-    "Critical Thinking",
+  "Generative AI & NLP": [
+    "Large Language Models (LLMs)", "RAG", "Prompt Engineering", "AI Agents", "LangChain", "LlamaIndex", "LLMOps"
   ],
+  "Data Science & Pipelines": [
+    "Scikit-Learn", "Feature Scaling (Standardization/Normalization)", "ColumnTransformer"
+  ]
 };
 
 export const FOCUS_AREAS = [
@@ -111,10 +93,39 @@ export const SOCIAL_LINKS = [
   },
 ];
 
+export const PROJECTS = [
+  {
+    id: 1,
+    title: "Production-Grade RAG Chatbot: Multi-Source Knowledge Engine",
+    liveUrl: "https://multi-document-rag-chatbot-mrkuwswcepqxaaw8ep9hdk.streamlit.app/",
+    technologies: ["Python", "LangChain", "ChromaDB", "Llama 3", "Streamlit"],
+    achievements: [
+      "Engineered an enterprise-ready Retrieval-Augmented Generation (RAG) system enabling dynamic, contextual conversations over multiple complex data sources (PDFs, Web URLs, and live SQLite/MySQL databases).",
+      "Implemented strict grounding mechanisms establishing high-confidence relevance thresholds to successfully prevent LLM hallucinations and incorrect responses.",
+      "Designed a session-aware conversational memory pipeline delivering precise source-level text citations, document page-number markers, and exact reference URLs.",
+      "Deployed the application on Streamlit Community Cloud, utilizing Groq's ultra-fast inference APIs for Llama 3 and HuggingFace for scalable cloud vector embeddings."
+    ]
+  },
+  {
+    id: 2,
+    title: "ResumeTailor: AI-Powered ATS Resume Optimizer",
+    liveUrl: "https://resume-builder-five-eta-85.vercel.app/",
+    technologies: ["Next.js", "FastAPI", "Python", "LangChain", "Groq"],
+    achievements: [
+      "Architected a full-stack resume optimization platform with a Next.js frontend and FastAPI backend, enabling users to upload existing resumes in PDF or DOCX format alongside a target job description.",
+      "Built an AI-driven tailoring pipeline leveraging Groq's Llama 3.3 70B and HuggingFace's Llama 3.1 8B models to perform keyword optimization, content rewriting, and relevancy scoring against job descriptions.",
+      "Engineered a dual-format document generation pipeline producing ATS-friendly, clean, and parsable resume outputs in both PDF and DOCX, free of complex tables or graphics.",
+      "Designed and exposed RESTful API endpoints for resume generation and file retrieval, reducing end-to-end processing and delivery time to under 8 seconds per request.",
+      "Deployed the full application to production on Vercel, delivering a live, publicly accessible AI resume optimization tool."
+    ]
+  }
+];
+
 export const NAV_LINKS = [
   { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
   { name: "Skills", href: "#skills" },
   { name: "Education", href: "#education" },
   { name: "Contact", href: "#contact" },
