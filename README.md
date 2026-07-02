@@ -6,6 +6,7 @@
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/preet3504)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/preet3504)
 [![Email](https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:preetpatel3504@gmail.com)
+[![Portfolio](https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://preet-portfolio-self.vercel.app/)
 
 📍 Surat, Gujarat, India • 🌐 Open to Global Remote Opportunities
 
@@ -49,6 +50,15 @@ Performance-driven **AI Engineer and Full-Stack Developer** with proven producti
 * **Multi-Source Ingestion**: Engineered an enterprise-grade Retrieval-Augmented Generation (RAG) pipeline handling PDFs, Web URLs, and live SQLite/MySQL databases.
 * **Anti-Hallucination Grounding**: Implemented strict semantic grounding mechanisms and high-confidence relevance thresholds to systematically eliminate LLM hallucinations.
 * **Conversational Memory**: Designed a session-aware conversational memory architecture providing precise source-level citations and reference URLs.
+* **Live Demo**: [Streamlit App](https://multi-document-rag-chatbot-mrkuwswcepqxaaw8ep9hdk.streamlit.app/)
+
+### 📝 ResumeTailor: AI-Powered ATS Resume Optimizer
+`Next.js` `FastAPI` `Python` `LangChain` `Groq`
+
+* **Full-Stack Architecture**: Architected a resume optimization platform with a Next.js frontend and FastAPI backend, enabling PDF/DOCX uploads alongside target job descriptions.
+* **AI Tailoring Pipeline**: Built an AI-driven tailoring pipeline leveraging Llama 3.3 70B and Llama 3.1 8B models to perform keyword optimization, content rewriting, and relevancy scoring.
+* **Document Generation**: Engineered a dual-format document generation pipeline producing clean, ATS-friendly outputs in both PDF and DOCX.
+* **Live Demo**: [Vercel App](https://resume-builder-five-eta-85.vercel.app/)
 
 ---
 
@@ -72,6 +82,7 @@ Active and open to advanced engineering roles focused on **Full Stack Developmen
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect_With_Me-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/preet3504)
 [![Email](https://img.shields.io/badge/Gmail-Drop_a_Mail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:preetpatel3504@gmail.com)
 [![GitHub](https://img.shields.io/badge/GitHub-Follow_Updates-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/preet3504)
+[![Portfolio](https://img.shields.io/badge/Portfolio-Live_Site-000000?style=for-the-badge&logo=vercel&logoColor=white)](https://preet-portfolio-self.vercel.app/)
 
 📍 *Based in Surat, India • Available for Global Remote Opportunities*
 
