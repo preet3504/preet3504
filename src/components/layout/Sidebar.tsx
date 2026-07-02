@@ -6,24 +6,43 @@ import { PERSONAL_INFO, NAV_LINKS, SOCIAL_LINKS } from '@/lib/constants';
 import Link from 'next/link';
 
 export const Sidebar: React.FC = () => {
-  const [activeSection, setActiveSection] = useState('hero');
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
+    const sectionIds = NAV_LINKS.map((link) => link.href.replace('#', ''));
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      // If at the bottom of the page, activate the last section
+      if (scrollY + windowHeight >= documentHeight - 50) {
+        setActiveSection(sectionIds[sectionIds.length - 1]);
+        return;
+      }
+
+      // Find the section whose top is closest to (but not past) the viewport center
+      let currentSection = sectionIds[0];
+      const offset = windowHeight * 0.3; // 30% from the top of the viewport
+
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= offset) {
+            currentSection = id;
           }
-        });
-      },
-      { threshold: 0.5, rootMargin: '-10% 0px -70% 0px' }
-    );
+        }
+      }
 
-    const sections = document.querySelectorAll('section[id]');
-    sections.forEach((section) => observer.observe(section));
+      setActiveSection(currentSection);
+    };
 
-    return () => sections.forEach((section) => observer.unobserve(section));
+    handleScroll(); // set initial state
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const getIcon = (name: string) => {
