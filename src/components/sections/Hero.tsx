@@ -99,7 +99,7 @@ export const Hero: React.FC = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Button size="lg" onClick={scrollToContact} className="w-full sm:w-auto">Get In Touch</Button>
-            <Button size="lg" variant="outline" onClick={() => window.open('/Preet-resume.pdf', '_blank')} className="w-full sm:w-auto">View Resume</Button>
+            <Button size="lg" variant="outline" onClick={() => window.open('/preet-ai-engineer.pdf', '_blank')} className="w-full sm:w-auto">View Resume</Button>
           </motion.div>
 
           <motion.div
